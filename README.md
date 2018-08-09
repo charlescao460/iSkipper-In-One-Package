@@ -1,7 +1,7 @@
 iSkipper-In-One-Package
 =======================
 An Atmega328P-MU, a RFM69HW, a CH340E,and a patch antenna on one PCB.
-![](https://github.com/charlescao460/iSkipper/blob/dev/emulator/iSkipper/iSkipper-in-one-package/pics/Ver2.0.0.Small.Size.jpg)
+![](https://github.com/charlescao460/iSkipper-In-One-Package/pics/Ver2.0.0.Small.Size.jpg)
 
 Cost of Materials
 ----

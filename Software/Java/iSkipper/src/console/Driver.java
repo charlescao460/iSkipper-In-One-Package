@@ -58,7 +58,7 @@ public class Driver
 			String toSend = String.format("%c,%02X%02X%02X%02X", answers[i % 5], arr[0], arr[1], arr[2], arr[3]);
 			// System.out.println(toSend);
 			serial.writeBytes(ASCII.stringToBytes(toSend));
-			Thread.sleep(1);
+			Thread.sleep(50);
 			if (i % 10000 == 0)
 			{
 				System.gc();

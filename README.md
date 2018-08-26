@@ -1,7 +1,7 @@
 iSkipper-In-One-Package
 =======================
-An Atmega328P-MU, a RFM69HW, a CH340E,and a patch antenna on one PCB.
-![](https://github.com/charlescao460/iSkipper-In-One-Package/blob/master/pics/Ver2.0.0.Small.Size.jpg)
+An integration of Arduino and RFM69HW for iClicker emulation.
+![](https://github.com/charlescao460/iSkipper-In-One-Package/blob/master/pics/iSkipper.Ver.2.0.2.jpg)
 
 Versions
 ----

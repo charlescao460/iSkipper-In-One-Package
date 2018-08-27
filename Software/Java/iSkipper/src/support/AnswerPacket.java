@@ -11,8 +11,7 @@ package support;
  */
 public class AnswerPacket implements Cloneable
 {
-	private int ID;
-	private byte[] arrID;
+	private IClickerID iClickerID;
 	private Answer answer;
 
 	/**
@@ -20,8 +19,7 @@ public class AnswerPacket implements Cloneable
 	 */
 	public AnswerPacket()
 	{
-		ID = 0x00_00_00_00;
-		arrID = intToByteArray(ID);
+		iClickerID = new IClickerID();
 		answer = Answer.P;
 	}
 
@@ -29,68 +27,20 @@ public class AnswerPacket implements Cloneable
 	 * @param answer
 	 *            the iClicker Answer
 	 * @param ID
-	 *            the iClicker ID,represented as an int32, must be valid,
+	 *            the iClicker ID.
 	 */
-	public AnswerPacket(Answer answer, int ID)
+	public AnswerPacket(Answer answer, IClickerID id)
 	{
-		this();
-		if (!isValidID(ID))
-		{
-			onInvalidID();
-			return;
-		}
 		this.answer = answer;
-		this.ID = ID;
-		this.arrID = intToByteArray(ID);
-	}
-
-	/**
-	 * @param answer
-	 *            the iClicker Answer
-	 * @param arrID
-	 *            the iClicker ID,represented as an array of bytes, must be valid
-	 */
-	public AnswerPacket(Answer answer, byte[] arrID)
-	{
-		this(answer, byteArrayToInt(arrID));
+		this.iClickerID = id;
 	}
 
 	/**
 	 * @return the iClicker ID in this packet.
 	 */
-	public int getID()
+	public IClickerID getID()
 	{
-		return ID;
-	}
-
-	/**
-	 * @param ID
-	 *            the ID to set in this packet.
-	 */
-	public void setID(int ID)
-	{
-		if (!isValidID(ID))
-		{
-			onInvalidID();
-			return;
-		}
-		this.ID = ID;
-		arrID = intToByteArray(ID);
-	}
-
-	/**
-	 * @param arrID
-	 *            the ID to set in this packet.
-	 */
-	public void setID(byte[] arrID)
-	{
-		if (!isValidID(arrID))
-		{
-			onInvalidID();
-			return;
-		}
-		this.arrID = arrID;
-		this.ID = byteArrayToInt(arrID);
+		return iClickerID;
 	}
 
 	/**
@@ -110,49 +60,10 @@ public class AnswerPacket implements Cloneable
 		this.answer = answer;
 	}
 
-	/**
-	 * @return the iClicker ID in this packet, represented as an array of bytes.
-	 */
-	public byte[] getArrID()
-	{
-		return arrID;
-	}
-
-	/**
-	 * @param arrID
-	 *            the iClicker ID, represented as an array of bytes.
-	 * @return if it is a valid iClicker ID
-	 */
-	public static boolean isValidID(byte[] arrID)
-	{
-		if (arrID.length < 4)
-			return false;
-		return ((arrID[0] ^ arrID[1] ^ arrID[2]) == arrID[3]);
-	}
-
-	/**
-	 * @param arrID
-	 *            the iClicker ID, represented as an int32.
-	 * @return if it is a valid iClicker ID
-	 */
-	public static boolean isValidID(int ID)
-	{
-		return isValidID(intToByteArray(ID));
-	}
-
-	/**
-	 * The private method that would be invoked when trying to set a invalid ID.
-	 */
-	private void onInvalidID()
-	{
-		IllegalArgumentException exception = new IllegalArgumentException("Invalid ID");
-		exception.printStackTrace();
-	}
-
 	@Override
 	public Object clone()
 	{
-		return new AnswerPacket(this.answer, this.arrID);
+		return new AnswerPacket(this.answer, ((IClickerID) this.iClickerID.clone()));
 	}
 
 	@Override
@@ -161,7 +72,7 @@ public class AnswerPacket implements Cloneable
 		if (obj == null || !obj.getClass().equals(this.getClass()))
 			return false;
 		AnswerPacket other = (AnswerPacket) obj;
-		return other.ID == this.ID && other.answer.equals(this.answer);
+		return other.iClickerID.equals(this.iClickerID) && other.answer.equals(this.answer);
 	}
 
 	/**
@@ -175,35 +86,7 @@ public class AnswerPacket implements Cloneable
 	@Override
 	public int hashCode()
 	{
-		return this.ID;
+		return this.iClickerID.getID();
 	}
 
-	/**
-	 * @param input
-	 *            an int32
-	 * @return an array of bytes, representing the input int32.(Little Endian)
-	 */
-	public static byte[] intToByteArray(int input)
-	{
-		return new byte[]
-		{ (byte) (input >> 24 & 0xFF), (byte) (input >> 16 & 0xFF), (byte) (input >> 8 & 0xFF), (byte) (input & 0xFF) };
-	}
-
-	/**
-	 * @param input
-	 *            an array of bytes.
-	 * @return an int32, representing the input byte array.(Little Endian)
-	 */
-	public static int byteArrayToInt(byte[] input)
-	{
-		try
-		{
-			return input[3] & 0xFF | (input[2] & 0xFF) << 8 | (input[1] & 0xFF) << 16 | (input[0] & 0xFF) << 24;
-		} catch (IndexOutOfBoundsException e)
-		{
-			System.err.println(e);
-			e.printStackTrace();
-		}
-		return -1;
-	}
 }

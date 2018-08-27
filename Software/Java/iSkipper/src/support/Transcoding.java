@@ -1,12 +1,12 @@
 package support;
 
 /**
- * Class for converting between ASCII and Unicode
+ * Class for converting between different encodings. (e.g. ASCII and Unicode).
  * 
  * @author Charles Cao (CSR)
  *
  */
-public final class ASCII
+public final class Transcoding
 {
 
 	/**
@@ -52,6 +52,35 @@ public final class ASCII
 	public static String bytesToString(byte[] bytes)
 	{
 		return String.valueOf(bytesToCharArray(bytes));
+	}
+
+	/**
+	 * @param input
+	 *            an int32
+	 * @return an array of bytes, representing the input int32.(Little Endian)
+	 */
+	public static byte[] intToByteArray(int input)
+	{
+		return new byte[]
+		{ (byte) (input >> 24 & 0xFF), (byte) (input >> 16 & 0xFF), (byte) (input >> 8 & 0xFF), (byte) (input & 0xFF) };
+	}
+
+	/**
+	 * @param input
+	 *            an array of bytes.
+	 * @return an int32, representing the input byte array.(Little Endian)
+	 */
+	public static int byteArrayToInt(byte[] input)
+	{
+		try
+		{
+			return input[3] & 0xFF | (input[2] & 0xFF) << 8 | (input[1] & 0xFF) << 16 | (input[0] & 0xFF) << 24;
+		} catch (IndexOutOfBoundsException e)
+		{
+			System.err.println(e);
+			e.printStackTrace();
+		}
+		return -1;
 	}
 
 }

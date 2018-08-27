@@ -90,3 +90,9 @@ Notes
 ATmega328P is working on 5 voltage, but RFM69HW requires 3.3 voltage. However, shockingly, they are stable and durable in daily use.
 
 Update 2018/07/06: In Ver.2.0.0 design, I added a TXB0106 for level-shifting. So the logic level won't be a problem anymore. But I am still wondering why RFM69HW could work proper under 5.0V. To save money, you could still consider remove TXB0106 in your own disign. 
+
+
+See also
+--------
+[iSkipper-Software](https://github.com/charlescao460/iSkipper-Software) 
+The softwares (contains Arduino Sketch) designed for these boards.

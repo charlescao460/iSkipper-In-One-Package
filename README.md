@@ -94,5 +94,8 @@ Update 2018/07/06: In Ver.2.0.0 design, I added a TXB0106 for level-shifting. So
 
 See also
 --------
+[iSkipper](https://github.com/wizard97/iSkipper) Original repository that inspired this project.
+
+
 [iSkipper-Software](https://github.com/charlescao460/iSkipper-Software) 
 The softwares (contains Arduino Sketch) designed for these boards.

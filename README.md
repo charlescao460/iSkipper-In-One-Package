@@ -62,29 +62,6 @@ Some useful pin headers are reserved for burning bootloader or debugging.
 
 This version requires external antenna for better RF performance. The high-gain antennas would improve receiving performances. However, the overall size of this board would then be very big. (And if you are using this in public, the flaring LEDs and long antenna would catch everyone's eyes:) 
 
-
-Cost of Materials
-----
-(In the Chinese Market)
-
-$0.87 Atmega328P-MU (Need to burn Arduino bootloader before soldering)
-
-$1.72 RFM69HW
-
-$0.27 CH340G
-
-$0.59 TXB0106RGYR
-
-$0.23 LP5907MFX-3.3 
-
-$0.56 PCB
-
-$0.5 Connectors, capacitors, oscillators, resistors.
-
-$FREE Manual soldering 
-
-Total: $4.74 (9.5% of the expensive iClicker2)
-
 Notes
 ------
 ATmega328P is working on 5 voltage, but RFM69HW requires 3.3 voltage. However, shockingly, they are stable and durable in daily use.

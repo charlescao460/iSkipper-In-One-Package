@@ -1,6 +1,6 @@
 iSkipper-In-One-Package
 =======================
-An integration of Arduino and RFM69HW for iClicker emulation.
+An integration of Arduino and RFM69HW for an audience response system.
 ![](https://github.com/charlescao460/iSkipper-In-One-Package/blob/master/pics/iSkipper.Ver.2.0.2.jpg)
 
 Versions
@@ -76,3 +76,16 @@ See also
 
 [iSkipper-Software](https://github.com/charlescao460/iSkipper-Software) 
 The softwares (contains Arduino Sketch) designed for these boards.
+
+
+Disclaimer
+----------
+**This project is only a special version of Arduino Nano.**
+
+**THIS PROJECT IS NOT DESIGNED TO REPLACE, EMULATE, OR BE COMPATIBLE WITH ANY SPECIFIC PRODUCT OF ANY COMPANY.**
+
+**ALL THE PICTURES AND DOCUMENTS OF THIS PROJECT DO NOT IMPLY ANY SPECIFIC USE OF THIS PROJECT. **
+
+**CONTRIBUTORS OF THIS PROJECT ARE FREE OF RESPONSIBILITY OF ANY IMPROPER USE OF THIS PROJECT.**
+
+
